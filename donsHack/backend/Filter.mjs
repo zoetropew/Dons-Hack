@@ -1,7 +1,7 @@
-var newSet = new Set();
-var mySet = new Set(["Collaborative", "a", "all", "photo", "editor", "project", "due", "tomorrow","morning", "There", "will", "be", "severe", "late", "penalties", "orange"]);
-printSetValues(mySet);
-function printSetValues(mySet) {
+//var newSet = new Set();
+// var mySet = new Set(["Collaborative", "a", "all", "photo", "editor", "project", "due", "tomorrow","morning", "There", "will", "be", "severe", "late", "penalties", "orange"]);
+// printSetValues(mySet);
+function removeCommonWords(mySet) {
     var stop_words = new Set([
         'a',
         'about',
@@ -435,12 +435,12 @@ function printSetValues(mySet) {
     ]);
     let wordToRemove = "";
   for (let value of mySet) {
-    if (stop_words.has(value)) {
+    if (stop_words.has(value.toLowerCase())) {
         mySet.delete(value);
     }
 }
-console.log(mySet);
+//console.log(mySet);
 }
-export { printSetValues };
+export { removeCommonWords };
 
 //lol

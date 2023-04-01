@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import TreeMap from 'treemap-js';
+import { removeCommonWords } from './Filter.mjs';
 
 var map = new TreeMap();
 var note = "";
@@ -33,7 +34,7 @@ export function readNote(title) {
         map.each(function (value, key) {
           console.log("Key: " + key);
           console.log("value: ");
-
+          removeCommonWords(value);
           for(var item of value.values()){
             console.log(item);
           }
