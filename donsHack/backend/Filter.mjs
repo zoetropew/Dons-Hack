@@ -440,5 +440,5 @@ function printSetValues(mySet) {
     }
 }
 console.log(mySet);
-  }
-  export { printSetValues };
+}
+export { printSetValues };
