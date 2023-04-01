@@ -8,17 +8,23 @@ import { Text, View } from '../../components/Themed';
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-    <View style={styles.bBox}>
+    <View style={{ flexDirection: 'row' }}>
+    <View style={{backgroundColor: '#E9FF70', marginTop:10, width: 266, height: 110,borderRadius: 15}}>
+      <View style={[styles.bBox,{marginLeft:15},{marginTop:-15}]}>
       <Text style={styles.text}>Let's get started</Text>
+      </View>
+    </View>
     </View>
     <View style={styles.sBox}>
       <Button 
       title = "Upload Images"
+      color="black"
       />
     </View>
     <View style={styles.sBox}>
     <Button
-    title = "Take Photos"/>
+    title = "Take Photos"
+    color="black"/>
     </View>  
     </View>
   );
@@ -58,9 +64,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 1,
   },
-  /*text2:{
-    fontSize: 28,
-    color: 'black',
-    paddingBottom: 5,
-  },*/
 });
