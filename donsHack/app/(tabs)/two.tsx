@@ -1,18 +1,30 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
+
+
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <Text style ={styles.box}> Let's get started</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+    <View style={styles.bBox}>
+      <Text style={styles.text}>Let's get started</Text>
+    </View>
+    <View style={styles.sBox}>
+      <Button 
+      title = "Upload Images"
+      />
+    </View>
+    <View style={styles.sBox}>
+    <Button
+    title = "Take Photos"/>
+    </View>  
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -20,25 +32,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    color: 'white',
-    fontSize: 30,
-    marginLeft: -15,
-    width: 300,
-    height: 135,
-    backgroundColor: '#8783dd',
+  bBox: {
+    backgroundColor: '#8783F1',
+    width: 266,
+    height: 110,
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderRadius: 15,
+    textAlign: 'center',
+    marginBottom: 90,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  text:{
+    fontSize: 31,
+    color: 'white',
+    paddingBottom: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  sBox: {
+    backgroundColor: '#D2F5F6',
+    width: 250,
+    height: 65,
+    margin: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 25,
+    textAlign: 'center',
+    marginBottom: 1,
   },
+  /*text2:{
+    fontSize: 28,
+    color: 'black',
+    paddingBottom: 5,
+  },*/
 });
