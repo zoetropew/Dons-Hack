@@ -1,73 +1,51 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons';
-import { Foundation } from '@expo/vector-icons';
-import Colors from '../../constants/Colors';
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import { SplashScreen, Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { useColorScheme } from 'react-native';
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+export {
+  // Catch any errors thrown by the Layout component.
+  ErrorBoundary,
+} from 'expo-router';
+
+export const unstable_settings = {
+  // Ensure that reloading on `/modal` keeps a back button present.
+  initialRouteName: '(tabs)',
+};
+
+export default function RootLayout() {
+  const [loaded, error] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    ...FontAwesome.font,
+  });
+
+  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
+  return (
+    <>
+      {/* Keep the splash screen open until the assets have loaded. In the future, we should just support async font loading with a native version of font-display. */}
+      {!loaded && <SplashScreen />}
+      {loaded && <RootLayoutNav />}
+    </>
+  );
 }
 
-export default function TabLayout() {
+function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={24} color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-            <Tabs.Screen
-        name="two"
-        options={{
-          title: 'New Upload',
-          tabBarIcon: ({ color }) => <AntDesign name="upload" size={24} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="three"
-        options={{
-          title: 'Notes',
-          tabBarIcon: ({ color }) => <Feather name="book-open" size={24} color={color} />,
-        }}
-      />
-
-      <Tabs.Screen
-        name="four"
-        options={{
-          title: 'Find Assignment',
-          tabBarIcon: ({ color }) => <Foundation name="page-search" size={24} color={color} />,
-        }}
-      />
-    </Tabs>
+    <>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        </Stack>
+      </ThemeProvider>
+    </>
   );
 }
