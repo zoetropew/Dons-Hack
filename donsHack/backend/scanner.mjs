@@ -12,7 +12,7 @@ const options = {
   // data: '{"objectUrl":"https://miro.medium.com/max/2400/1*T8LN_mDq8vNrD63IIIgzjQ.png"}'
   
   // Testing handwriting source data
-  data: '{"objectUrl":"https://external-preview.redd.it/qfdH8H38j1lV3nGUwfGmKhME_JgwIzKo-0woTuWLdy4.jpg?auto=webp&v=enabled&s=e597a56867b5c3dbff77a2b349d055bdcf1458af"}'
+  data: '{"objectUrl":"https://raw.githubusercontent.com/zoetropew/Dons-Hack/main/donsHack/backend/testData/whiteboard.jpeg"}'
 };
 
 axios.request(options).then(function (response) {
