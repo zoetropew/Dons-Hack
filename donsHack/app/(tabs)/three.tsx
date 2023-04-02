@@ -7,7 +7,7 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.tbox}>
-      <Text style={styles.title}>Search Results</Text>
+      <Text style={styles.title}>Documents</Text>
       </View>
     <View style={styles.cbox}>
     <Button
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   title:{
     marginTop: 15,
-    marginLeft: 20,
+    marginLeft: 40,
     marginRight: 30,
     fontSize: 28,
     fontWeight: 'bold',
@@ -79,4 +79,5 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
 });
+
 
