@@ -436,6 +436,12 @@ export function removeCommonWords(mySet) {
   for (let value of mySet) {
     if (stop_words.has(value.toLowerCase())) {
         mySet.delete(value);
+    } else {
+        let temp = value.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+        if(temp != value){
+            mySet.delete(value);
+            mySet.add(temp);
+        }
     }
 }
 return mySet;
