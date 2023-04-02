@@ -1,22 +1,6 @@
-// import TreeMap from 'treemap-js';
-
 //Take in a query and data structure with note name and note contents
 //return search results 
 
-//example of assignment details
-
-// var query = new Set(["Collaborative", "a", "all", "photo", "editor", "project", "due", "tomorrow","morning", "There", "will", "be", "severe", "late", "penalties", "orange"]);
-
-// var note1Set = new Set(["Students", "you", "must", "read", "all", "materials", "project", "tomorrow"]);
-
-// var note2Set = new Set(["editor", "due", "quick", "query"]);
-
-// var map = new Map();
-
-
-
-// map.set('note 1', note1Set);
-// map.set('note 2', note2Set);
 export function queryEval(query, map) { //Query should be a set/object containing assignment details
     var results = new Map();
     let count = 0;
@@ -41,6 +25,3 @@ export function queryEval(query, map) { //Query should be a set/object containin
 
     return results;
 }
-
-
-// queryEval(query, map);

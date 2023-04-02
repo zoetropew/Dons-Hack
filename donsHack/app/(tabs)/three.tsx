@@ -2,7 +2,6 @@ import { StyleSheet, Button, Alert } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-
 import { readNote } from '../../backend/noteStorer.mjs';
 
   export default function NotesScreen() {

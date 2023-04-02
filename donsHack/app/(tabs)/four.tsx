@@ -1,14 +1,10 @@
 import { StyleSheet,Button, TextInput, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import NotesScreen from './three';
-
+import React from 'react';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-
-import React from 'react';
 import { removeCommonWords } from '../../backend/Filter.mjs';
-import { readNote, readNoteMap, readNoteSet } from '../../backend/noteStorer.mjs';
+import { readNote, readNoteSet } from '../../backend/noteStorer.mjs';
 import { queryEval } from '../../backend/searchFile.mjs';
 
 export default function AssignmentScreen() {
@@ -62,14 +58,12 @@ export default function AssignmentScreen() {
   const handleSubmit = () => {
     console.log(textInputValue);
     let queries = new Set(textInputValue.split(" "));
-    // console.log(queries);
-    // queries = removeCommonWords(queries);
-    // console.log("newer: ");
-    // console.log(queries);
-    // get map
+    console.log(queries);
+    queries = removeCommonWords(queries);
+    console.log("newer: ");
+    console.log(queries);
     let results = queryEval(queries, map);
     console.log(results);
-    // call searchFile
     let finalset = new Set();
     results.forEach(function (value, key) {
       if (value > 0) {
@@ -98,7 +92,6 @@ export default function AssignmentScreen() {
           placeholder='Paste your assignment here!'
           placeholderTextColor="#b09bc9"
         />
-        {/* <Text style={styles.text}></Text> */}
         </View>
       <View style={styles.sBox}>
       <Button 
