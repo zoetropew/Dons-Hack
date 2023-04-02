@@ -1,4 +1,4 @@
-import { StyleSheet,Button, TextInput } from 'react-native';
+import { StyleSheet,Button, TextInput, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import NotesScreen from './three';
 
@@ -7,8 +7,51 @@ import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
 import React from 'react';
+import { removeCommonWords } from '../../backend/Filter.mjs';
+import { readNote, readNoteMap, readNoteSet } from '../../backend/noteStorer.mjs';
+import { queryEval } from '../../backend/searchFile.mjs';
 
 export default function AssignmentScreen() {
+
+  const jsonData1 = require('../../backend/astrophysics.json');
+  let text1 = JSON.stringify(jsonData1);
+  let astrophysicsNote = readNote("4/21 Note", text1);
+  let astrophysics = readNoteSet(text1);
+
+  const jsonData2 = require('../../backend/cs.json');
+  let text2 = JSON.stringify(jsonData2);
+  let csNote = readNote("3/21 Note", text2);
+  let cs = readNoteSet(text2);
+
+  const jsonData3 = require('../../backend/energy.json');
+  let text3 = JSON.stringify(jsonData3);
+  let energyNote = readNote("2/21 Note", text3);
+  let energy = readNoteSet(text3);
+
+  const jsonData4 = require('../../backend/ds.json');
+  let text4 = JSON.stringify(jsonData4);
+  let dsNote = readNote("1/21 Note", text4);
+  let ds = readNoteSet(text4);
+
+  const jsonData5 = require('../../backend/relativity.json');
+  let text5 = JSON.stringify(jsonData5);
+  let relativityNote = readNote("12/21 Note", text5);
+  let relativity = readNoteSet(text5);
+
+  let map = new Map();
+  map.set("4/21 Note", astrophysics);
+  map.set("3/21 Note", cs);
+  map.set("2/21 Note", energy);
+  map.set("1/21 Note", ds);
+  map.set("12/21 Note", relativity);
+
+  let noteMap = new Map();
+  noteMap.set("4/21 Note", astrophysicsNote);
+  noteMap.set("3/21 Note", csNote);
+  noteMap.set("2/21 Note", energyNote);
+  noteMap.set("1/21 Note", dsNote);
+  noteMap.set("12/21 Note", relativityNote);
+
 
   const [textInputValue, setTextInputValue] = React.useState('');
 
@@ -18,6 +61,27 @@ export default function AssignmentScreen() {
 
   const handleSubmit = () => {
     console.log(textInputValue);
+    let queries = new Set(textInputValue.split(" "));
+    // console.log(queries);
+    // queries = removeCommonWords(queries);
+    // console.log("newer: ");
+    // console.log(queries);
+    // get map
+    let results = queryEval(queries, map);
+    console.log(results);
+    // call searchFile
+    let finalset = new Set();
+    results.forEach(function (value, key) {
+      if (value > 0) {
+        finalset.add(key);
+      }
+    });
+    let toShow = "";
+    for (let value of finalset) {
+      toShow += "=================\n" + value + ":\n";
+      toShow += noteMap.get(value);
+    }
+    Alert.alert("Your relevant notes:\n" + toShow);
   };
 
   return (
