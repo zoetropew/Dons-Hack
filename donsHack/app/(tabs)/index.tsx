@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   box: {
-    marginLeft: -15,
+    marginLeft: -30,
     width: 300,
     height: 135,
     backgroundColor: '#8783F1',
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 45,
   },
   title: {
-    marginLeft: 25,
-    marginTop: 70,
+    marginLeft: 35,
+    marginTop: 50,
     fontSize: 50,
     fontWeight: 'normal',
     color: 'white',
