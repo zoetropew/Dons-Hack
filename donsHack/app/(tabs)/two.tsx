@@ -1,19 +1,38 @@
-import { StyleSheet, Button, Alert } from 'react-native';
+import { StyleSheet, Button, Alert, Platform } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
-import noteList from '../../backend/noteList.mjs';
-import { readNote } from '../../backend/noteStorer.mjs';
+import React, { useEffect } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function UploadScreen() {
 
-  const allNotes = new noteList();
+  const [selectedImage, setSelectedImage] = React.useState(null);
 
-  const jsonData = require('../../backend/output.json');
-  let text = JSON.stringify(jsonData);
-  // console.log(text);
-  let final = readNote("something", text);
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    // if (!result.cancelled) {
+    //   setSelectedImage(result.uri);
+    // }
+  };
 
   return (
     <View style={styles.container}>
@@ -28,15 +47,13 @@ export default function UploadScreen() {
       <Button 
       title = "Upload Images"
       color="black"
-      // onPress={() => allNotes.addNote("3/31", text)}
-      onPress={() => Alert.alert(final)}
+      onPress={pickImage}
       />
     </View>
     <View style={styles.sBox}>
     <Button
     title = "Take Photos"
     color="black"
-    // onPress={() => allNotes.getNote("3/31")}
     />
     </View>  
     </View>
