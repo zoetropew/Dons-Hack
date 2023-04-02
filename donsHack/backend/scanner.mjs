@@ -1,4 +1,6 @@
-// Takes image url input, calls API to scan for text, stores data in an output.json file
+/**
+ * Takes image url input, calls API to scan for text, stores data in an output.json file
+ */
 
 import axios from 'axios';
 import fs from 'fs';
@@ -21,6 +23,9 @@ const options = {
   data: '{"objectUrl":"https://raw.githubusercontent.com/zoetropew/Dons-Hack/main/donsHack/backend/testData/whiteboard.jpeg"}'
 };
 
+/**
+ * Writes the image data to a file so repeated API calls can be avoided during testing
+ */
 axios.request(options).then(function (response) {
   fs.writeFile('output.json', JSON.stringify(response.data), function (err) {
     if (err) throw err;

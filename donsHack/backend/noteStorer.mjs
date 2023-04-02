@@ -1,6 +1,15 @@
-// Reads output.json to store note and index
+/**
+ * Reads output.json to store individual notes as strings of text and as sets of key words from the text
+ */
 
 
+/**
+ * Reads the note as a string
+ * 
+ * @param {String} title the title of the note
+ * @param {JSON String} data the data from the image
+ * @returns the note as a string
+ */
 export function readNote(title, data) {
     var note = "";
     const jsonData = JSON.parse(data);
@@ -13,6 +22,13 @@ export function readNote(title, data) {
     return note;
 }
 
+/**
+ * Reads the note as a Map of String title to a Set of words
+ * 
+ * @param {String} title the title of the note
+ * @param {JSON String} data the data from the image
+ * @returns the note as a Map of String title to a Set of words
+ */
 export function readNoteMap(title, data) {
   var map = new Map();
   const jsonData = JSON.parse(data);
@@ -39,6 +55,12 @@ export function readNoteMap(title, data) {
   return map;
 }
 
+/**
+ * Reads the note as a Set of words
+ * 
+ * @param {JSON String} data the data from the image
+ * @returns the Set of words in the note, cleaned and lowercased
+ */
 export function readNoteSet(data) {
   var set = new Set();
   const jsonData = JSON.parse(data);

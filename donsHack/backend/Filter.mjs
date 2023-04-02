@@ -1,3 +1,10 @@
+
+/**
+ * Takes a set of words and removes common words from it, such as 'a', 'about', 'above', etc.
+ * 
+ * @param {Set<String>} mySet the set to remove common words from 
+ * @returns a Set without any common words
+ */
 export function removeCommonWords(mySet) {
     var stop_words = new Set([
         'a',
@@ -430,7 +437,6 @@ export function removeCommonWords(mySet) {
         'yours',
         'z'
     ]);
-    let wordToRemove = "";
   for (let value of mySet) {
     if (stop_words.has(value.toLowerCase())) {
         mySet.delete(value);
