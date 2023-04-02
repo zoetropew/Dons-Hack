@@ -8,6 +8,16 @@ import fs from 'fs';
 // PLEASE USE SPARINGLY: I only have 100 free API calls and I already used 30 of them lol
 // to access test data read from whiteboard.jpeg, use output.json which was generated from the last API call
 
+/**
+ * Test data files generated in this directory:
+ *    astrophysics.json
+ *    cs.json
+ *    ds.json
+ *    energy.json
+ *    output.json
+ *    relativity.json
+ */
+
 const options = {
   method: 'POST',
   url: 'https://text-in-images-recognition.p.rapidapi.com/prod',
