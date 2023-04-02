@@ -1,11 +1,20 @@
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, Alert } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
+import noteList from '../../backend/noteList.mjs';
+import { readNote } from '../../backend/noteStorer.mjs';
 
+export default function UploadScreen() {
 
-export default function TabTwoScreen() {
+  const allNotes = new noteList();
+
+  const jsonData = require('../../backend/output.json');
+  let text = JSON.stringify(jsonData);
+  // console.log(text);
+  let final = readNote("something", text);
+
   return (
     <View style={styles.container}>
     <View style={{ flexDirection: 'row' }}>
@@ -19,12 +28,16 @@ export default function TabTwoScreen() {
       <Button 
       title = "Upload Images"
       color="black"
+      // onPress={() => allNotes.addNote("3/31", text)}
+      onPress={() => Alert.alert(final)}
       />
     </View>
     <View style={styles.sBox}>
     <Button
     title = "Take Photos"
-    color="black"/>
+    color="black"
+    onPress={() => allNotes.getNote("3/31")}
+    />
     </View>  
     </View>
   );

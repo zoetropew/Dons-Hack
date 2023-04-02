@@ -3,11 +3,15 @@ import { StyleSheet, Button } from 'react-native';
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
-export default function TabOneScreen() {
+import noteList from '../../backend/noteList.mjs';
+
+// export default function TabThreeScreen(notes: noteList, results: noteList) {
+  export default function NotesScreen() {
+  let view = "Documents";
   return (
     <View style={styles.container}>
       <View style={styles.tbox}>
-      <Text style={styles.title}>Documents</Text>
+      <Text style={styles.title}>{view}</Text>
       </View>
     <View style={styles.cbox}>
     <Button
