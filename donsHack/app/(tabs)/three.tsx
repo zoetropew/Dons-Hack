@@ -5,9 +5,6 @@ import { Text, View } from '../../components/Themed';
 
 import { readNote } from '../../backend/noteStorer.mjs';
 
-import noteList from '../../backend/noteList.mjs';
-
-// export default function TabThreeScreen(notes: noteList, results: noteList) {
   export default function NotesScreen() {
   let view = "Documents";
 
