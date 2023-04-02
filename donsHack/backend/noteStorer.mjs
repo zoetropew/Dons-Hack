@@ -5,7 +5,7 @@ export function readNote(title, data) {
     var map = new Map();
     var note = "";
 
-    console.log(typeof(data));
+    // console.log(typeof(data));
     const jsonData = JSON.parse(data);
     jsonData.TextDetections.forEach((obj) => {
     if (obj.Type == "LINE") {
@@ -21,15 +21,15 @@ export function readNote(title, data) {
         map.set(title, temp);
       }
     });
-    console.log(note);
-    console.log("printing map...");
-    map.forEach(function (value, key) {
-      console.log("Key: " + key);
-      console.log("value: ");
+    // console.log(note);
+    // console.log("printing map...");
+    // map.forEach(function (value, key) {
+    //   console.log("Key: " + key);
+    //   console.log("value: ");
 
-      for(var item of value.values()){
-        console.log(item);
-      }
-    })
+    //   for(var item of value.values()){
+    //     console.log(item);
+    //   }
+    // })
     return note;
 }
