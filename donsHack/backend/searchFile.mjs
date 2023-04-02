@@ -1,4 +1,4 @@
-import TreeMap from 'treemap-js';
+// import TreeMap from 'treemap-js';
 
 //Take in a query and data structure with note name and note contents
 //return search results 
@@ -11,17 +11,17 @@ import TreeMap from 'treemap-js';
 
 // var note2Set = new Set(["editor", "due", "quick", "query"]);
 
-// var map = new TreeMap();
+// var map = new Map();
 
 
 
 // map.set('note 1', note1Set);
 // map.set('note 2', note2Set);
-function queryEval(query, map) { //Query should be a set/object containing assignment details
-    var results = new TreeMap();
+export function queryEval(query, map) { //Query should be a set/object containing assignment details
+    var results = new Map();
     let count = 0;
     console.log("made it into query: " + query);
-    map.each(function (value, key) {
+    map.forEach(function (value, key) {
         console.log(key);
         for(var item of value.values()){
             for (let word of query) {
@@ -35,7 +35,7 @@ function queryEval(query, map) { //Query should be a set/object containing assig
         console.log(key + " "+count);
         count = 0;
     })
-    results.each(function(value, key) {
+    results.forEach(function(value, key) {
         console.log(key +": "+ value);
     })
 
@@ -44,5 +44,3 @@ function queryEval(query, map) { //Query should be a set/object containing assig
 
 
 // queryEval(query, map);
-
-export { queryEval };

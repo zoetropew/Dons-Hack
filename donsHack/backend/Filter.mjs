@@ -1,7 +1,6 @@
-//var newSet = new Set();
+// var newSet = new Set();
 // var mySet = new Set(["Collaborative", "a", "all", "photo", "editor", "project", "due", "tomorrow","morning", "There", "will", "be", "severe", "late", "penalties", "orange"]);
-// printSetValues(mySet);
-function removeCommonWords(mySet) {
+export function removeCommonWords(mySet) {
     var stop_words = new Set([
         'a',
         'about',
@@ -439,8 +438,7 @@ function removeCommonWords(mySet) {
         mySet.delete(value);
     }
 }
-//console.log(mySet);
+return mySet;
 }
-export { removeCommonWords };
-
+// console.log(removeCommonWords(mySet));
 //lol
