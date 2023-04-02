@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { AntDesign, Feather, Foundation, Ionicons } from '@expo/vector-icons';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
@@ -28,10 +29,10 @@ export default function HomeScreen() {
         <Text style={styles.title}>WriteBoard.</Text>
       <View style={styles.textBox}> 
         <Text style={styles.text}>How to use: 
-        {'\n'}{'\n'}Tap the ICON icon to begin converting your white board captures to text
-        {'\n'}{'\n'}{'\n'} If you’d like to view previous entries, tap the ICON icon 
-        {'\n'}{'\n'}{'\n'}Tap the ICON icon to search and find your class notes.
-        {'\n'}{'\n'}{'\n'} Tap the ICON icon to navigate back to home page</Text>
+        {'\n'}{'\n'}Tap the <AntDesign name="upload" size={24} color={'#8783F1'}/> icon to begin converting your white board captures to text
+        {'\n'}{'\n'}{'\n'} If you’d like to view previous entries, tap the <Feather name="book-open" size={24} color={'#8783F1'} /> icon 
+        {'\n'}{'\n'}{'\n'}Tap the <Foundation name="page-search" size={24} color={'#8783F1'} /> icon to search and find your class notes.
+        {'\n'}{'\n'}{'\n'} Tap the <Ionicons name="home-outline" size={24} color={'#8783F1'} /> icon to navigate back to home page</Text>
       </View>
       </View>
     </View>
