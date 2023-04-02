@@ -9,7 +9,9 @@ import fs from 'fs';
 // to access test data read from whiteboard.jpeg, use output.json which was generated from the last API call
 
 /**
- * Test data files generated in this directory:
+ * Images that were read are stored in the testData folder
+ * 
+ * Test data files generated from those images are in this directory under the following names:
  *    astrophysics.json
  *    cs.json
  *    ds.json
