@@ -36,7 +36,7 @@ export default function UploadScreen() {
     <Button
     title = "Take Photos"
     color="black"
-    onPress={() => allNotes.getNote("3/31")}
+    // onPress={() => allNotes.getNote("3/31")}
     />
     </View>  
     </View>
