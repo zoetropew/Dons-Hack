@@ -1,7 +1,10 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
 
 /**
@@ -25,8 +28,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={24} color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -46,22 +49,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'New Upload',
+          tabBarIcon: ({ color }) => <AntDesign name="upload" size={24} color={color}/>,
         }}
       />
       <Tabs.Screen
         name="three"
         options={{
-          title: 'Tab Three',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Notes',
+          tabBarIcon: ({ color }) => <Feather name="book-open" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="four"
         options={{
-          title: 'Tab Four',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Find Assignment',
+          tabBarIcon: ({ color }) => <Foundation name="page-search" size={24} color={color} />,
         }}
       />
     </Tabs>
