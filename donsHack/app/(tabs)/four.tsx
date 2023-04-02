@@ -1,4 +1,4 @@
-import { StyleSheet,Button, TextInput, Alert } from 'react-native';
+import { StyleSheet,Button, TextInput, Alert, Keyboard } from 'react-native';
 import React from 'react';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
@@ -70,12 +70,16 @@ export default function AssignmentScreen() {
         finalset.add(key);
       }
     });
-    let toShow = "";
-    for (let value of finalset) {
-      toShow += "=================\n" + value + ":\n";
-      toShow += noteMap.get(value);
+    if(finalset.size > 0) {
+      let toShow = "";
+      for (let value of finalset) {
+        toShow += "=================\n" + value + ":\n";
+        toShow += noteMap.get(value);
+      }
+      Alert.alert("Your relevant notes:\n" + toShow);
+    } else {
+      Alert.alert("Please enter an assignment to search for relevant notes.");
     }
-    Alert.alert("Your relevant notes:\n" + toShow);
   };
 
   return (
@@ -86,11 +90,20 @@ export default function AssignmentScreen() {
       </View>
       <View style={styles.textBox}>
         <TextInput
+          multiline
+          returnKeyType="done"
           style={styles.input}
           onChangeText={handleTextInputChange}
           value={textInputValue}
           placeholder='Paste your assignment here!'
           placeholderTextColor="#b09bc9"
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+            handleTextInputChange
+            handleSubmit;
+          }}
+          // onSubmitEditing={handleSubmit}
+          blurOnSubmit={true}
         />
         </View>
       <View style={styles.sBox}>
