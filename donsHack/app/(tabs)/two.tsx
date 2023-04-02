@@ -29,9 +29,22 @@ export default function UploadScreen() {
       quality: 1,
     });
 
-    // if (!result.cancelled) {
-    //   setSelectedImage(result.uri);
-    // }
+    if (!result.canceled) {
+      // setSelectedImage(result.uri);
+      Alert.prompt(
+        "Title of note: ",
+        "",
+        [
+          {
+            text: "enter",
+            onPress: (title) => {
+              console.log("Title of note: " + title);
+              Alert.alert("Image scanned and uploaded");
+            }
+          }
+        ]
+      );      
+    }
   };
 
   return (
@@ -54,6 +67,7 @@ export default function UploadScreen() {
     <Button
     title = "Take Photos"
     color="black"
+    onPress={() => Alert.alert("Camera option coming soon!")}
     />
     </View>  
     </View>
