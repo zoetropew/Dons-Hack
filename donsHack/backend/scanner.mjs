@@ -20,12 +20,14 @@ import fs from 'fs';
  *    relativity.json
  */
 
+const key = fs.readFileSync('./key.json');
+
 const options = {
   method: 'POST',
   url: 'https://text-in-images-recognition.p.rapidapi.com/prod',
   headers: {
     'content-type': 'application/json',
-    'X-RapidAPI-Key': '8a747041b9mshc6017c4b82c1f35p1735cbjsn8c26a1d30b32',
+    'X-RapidAPI-Key': key,
     'X-RapidAPI-Host': 'text-in-images-recognition.p.rapidapi.com'
   },
   // Example
